@@ -29,11 +29,14 @@ $(NAME) : $(OBJECTS) libft.h
 %.o: %.c
 	$(CC) $(CFLAGS) $(DFLAGS) -c $^ -o $@
 
-bonus: $(NAME) $(BONUSOBJECTS)
-	ar rcs $(NAME) $(BONUSOBJECTS)
+bonus: bonus_tmp
+
+bonus_tmp : $(BONUSOBJECTS) $(OBJECTS) libft.h
+	ar rcs $(NAME) $^
+	touch bonus_tmp
 
 clean:
-	rm -f $(OBJECTS) $(BONUSOBJECTS)
+	rm -f $(OBJECTS) $(BONUSOBJECTS) bonus_tmp
 
 fclean: clean
 	rm -f $(NAME)
