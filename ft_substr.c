@@ -6,7 +6,7 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 13:14:50 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/16 15:01:04 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/17 14:09:40 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 /*
 int	main(void)
 {
-	char *str = "test c'est une phrase ++++";
+	char	*str;
+
+	str = "test c'est une phrase ++++";
 	printf("%s",ft_substr(str, 5, 10));
 }
 */

@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmontard <nmontard@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/06 15:59:49 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/17 14:06:57 by nmontard         ###   ########.fr       */
+/*   Created: 2025/11/15 14:39:34 by nmontard          #+#    #+#             */
+/*   Updated: 2025/11/15 15:02:42 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	counter;
+	int	counter;
 
-	counter = 0;
-	while (str[counter] != '\0')
+	counter = 1;
+	if (!lst)
+		return (0);
+	while (lst->next)
 	{
 		counter++;
+		lst = lst->next;
 	}
 	return (counter);
 }
+/*
+int main(void)
+{
+	t_list *list;
+
+	list = ft_lstnew("second");
+	ft_lstadd_front(&list, ft_lstnew("first"));
+	printf("%d\n", ft_lstsize(list));
+}*/

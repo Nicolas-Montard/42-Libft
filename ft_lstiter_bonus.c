@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/12 12:05:43 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/17 16:48:05 by nmontard         ###   ########.fr       */
+/*   Created: 2025/11/15 16:46:11 by nmontard          #+#    #+#             */
+/*   Updated: 2025/11/16 11:07:17 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	void			*array;
-	unsigned int	i;
-
-	i = 0;
-	if (nmemb <= 0 || size <= 0)
-		return (malloc(0));
-	if (size && nmemb > INT_MAX / size)
-		return (0);
-	array = malloc(nmemb * size);
-	if (!array)
-		return (array);
-	while (i < nmemb * size)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		((char *)array)[i] = 0;
-		i++;
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (array);
 }
+
+/*
+void	print_str(void *str)
+{
+	printf("%s\n", (char *)str);
+}
+
+int	main(void)
+{
+	t_list *list;
+
+	list = ft_lstnew("third");
+	ft_lstadd_front(&list, ft_lstnew("second"));
+	ft_lstadd_front(&list, ft_lstnew("first"));
+	ft_lstadd_back(&list, ft_lstnew("fourth"));
+	ft_lstiter(list ,print_str);
+}*/

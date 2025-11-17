@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/12 12:05:43 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/17 16:48:05 by nmontard         ###   ########.fr       */
+/*   Created: 2025/11/15 14:50:56 by nmontard          #+#    #+#             */
+/*   Updated: 2025/11/16 11:07:28 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
-void	*ft_calloc(size_t nmemb, size_t size)
+t_list	*ft_lstlast(t_list *lst)
 {
-	void			*array;
-	unsigned int	i;
-
-	i = 0;
-	if (nmemb <= 0 || size <= 0)
-		return (malloc(0));
-	if (size && nmemb > INT_MAX / size)
+	if (!lst)
 		return (0);
-	array = malloc(nmemb * size);
-	if (!array)
-		return (array);
-	while (i < nmemb * size)
-	{
-		((char *)array)[i] = 0;
-		i++;
-	}
-	return (array);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
+/*
+int	main(void)
+{
+	t_list *list;
+
+	list = ft_lstnew("third");
+	ft_lstadd_front(&list, ft_lstnew("second"));
+	ft_lstadd_front(&list, ft_lstnew("first"));
+	printf("%s\n", (char *)(ft_lstlast(list)->content));
+}*/

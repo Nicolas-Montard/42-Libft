@@ -6,7 +6,7 @@
 #    By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 15:10:14 by nmontard          #+#    #+#              #
-#    Updated: 2025/11/16 11:49:18 by nmontard         ###   ########.fr        #
+#    Updated: 2025/11/17 12:25:29 by nmontard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,13 @@ OBJECTS = $(CFILES:.c=.o)
 BONUSOBJECTS = $(CBONUSFILES:.c=.o)
 NAME = libft.a
 
-
 all: $(NAME)
 
-$(NAME) : $(OBJECTS)
+$(NAME) : $(OBJECTS) libft.h
 	ar rcs $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	$(CC) $(CFLAGS) $(DFLAGS) -c $^ -o $@
 
 bonus: $(NAME) $(BONUSOBJECTS)
 	ar rcs $(NAME) $(BONUSOBJECTS)
